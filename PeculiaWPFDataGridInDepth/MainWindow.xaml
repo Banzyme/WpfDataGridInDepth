@@ -140,12 +140,11 @@
 
             <TabItem Header="Grouping Items - Basic example">
 
-                <DataGrid 
-                    HorizontalAlignment="Stretch"
-                    IsReadOnly="True"
-                    CanUserAddRows="False"
-                    ColumnWidth="*"
-                    ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Path=DataContext.TaxpayersCollection}">
+                <DataGrid HorizontalAlignment="Stretch"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          ColumnWidth="*"
+                          ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Path=DataContext.TaxpayersCollection}">
 
                     <DataGrid.GroupStyle>
                         <GroupStyle>
@@ -173,7 +172,7 @@
                                                         </DockPanel>
                                                     </Expander.Header>
                                                     <Expander.Content>
-                                                        <ItemsPresenter/>
+                                                        <ItemsPresenter />
                                                     </Expander.Content>
                                                 </Expander>
                                             </ControlTemplate>
@@ -190,6 +189,29 @@
 
             </TabItem>
 
+
+            <TabItem Header="Datagrid filtering">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition  Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel HorizontalAlignment="Center"
+                                Margin="0,10,0,10"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                Height="Auto">
+                        <TextBox Text="Filtering by Gener" />
+                        <ComboBox SelectedIndex="0"
+                                  ItemsSource="{Binding Source={StaticResource GenderEnums}}" />
+                    </StackPanel>
+
+                    <DataGrid Grid.Row="1" />
+                </Grid>
+
+            </TabItem>
 
         </TabControl>
 
