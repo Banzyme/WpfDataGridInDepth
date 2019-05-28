@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace PeculiaWPFDataGridInDepth
@@ -22,6 +23,7 @@ namespace PeculiaWPFDataGridInDepth
             LoadIntialData();
         }
 
+        public RelayCommand<object> SpellCheckCommand { get; private set; }
 
         public ObservableCollection<TaxPayer> TaxPayersList
         {
@@ -77,6 +79,28 @@ namespace PeculiaWPFDataGridInDepth
             taxpayersList = DataService.GetAllTaxPayers();
             collectionView = new ListCollectionView(taxpayersList);
             collectionView.GroupDescriptions.Add(new PropertyGroupDescription("Gender"));
+            SpellCheckCommand = new RelayCommand<object>(OnCheckSpelling);
+        }
+
+        private void OnCheckSpelling(object txtBx)
+        {
+            var textBox = (TextBox)txtBx;
+            int noOfErrors = 0;
+            string[] contentList = textBox.Text.Split(' ');
+
+            contentList.ToList().ForEach( word => {
+
+                var phrase = new TextBox() { Text = word };
+                phrase.SpellCheck.IsEnabled = true;
+
+                SpellingError err = phrase.GetSpellingError(0) ;
+                var errLength = phrase.GetSpellingErrorLength(0);
+                var errStart = phrase.GetSpellingErrorStart(0);
+
+                if (err != null) noOfErrors++;
+            });
+
+            MessageBox.Show($"You have {noOfErrors} spelling error(s), please rectify then press procceed.");
         }
 
         private void FilterByFirstName(string searchTerm)

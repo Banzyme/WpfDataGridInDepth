@@ -282,7 +282,8 @@
 
             <TabItem Header="Spell Checking">
                 <StackPanel Background="Purple">
-                    <TextBox Padding="5"
+                    <TextBox x:Name="spellCheckTxtBox" 
+                             Padding="5"
                              Margin="10"
                              Background="White"
                              Text="Suam text"
@@ -293,7 +294,7 @@
                         </SpellCheck.CustomDictionaries>
                     </TextBox>
 
-                    <Button Margin="10" Padding="5" Content="Verify spelling" />
+                    <Button Margin="10" Padding="5" Content="Verify spelling" CommandParameter="{Binding ElementName=spellCheckTxtBox}" Command="{Binding ElementName=GridWrapper, Path=DataContext.SpellCheckCommand}" />
                 </StackPanel>
             </TabItem>
 
