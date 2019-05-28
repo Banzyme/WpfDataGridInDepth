@@ -203,13 +203,77 @@
                                 Grid.Row="0"
                                 Orientation="Horizontal"
                                 Height="Auto">
-                        <TextBox Text="Filtering by Gener" />
-                        <ComboBox 
-                                  SelectedItem="{Binding ElementName=GridWrapper, Path=DataContext.GenderFilter }"
+                        <TextBox Text="Filtering by Gender"
+                                 Padding="3"
+                                 IsReadOnly="True" />
+                        <ComboBox SelectedItem="{Binding ElementName=GridWrapper, Path=DataContext.GenderFilter }"
                                   ItemsSource="{Binding Source={StaticResource GenderEnums}}" />
+
+
+                        
+                            
+                            <Border BorderBrush="MidnightBlue" Margin="10,1,1,1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Search" />
+                                <TextBox Text="{Binding ElementName=GridWrapper, Path=DataContext.SearchString, UpdateSourceTrigger=PropertyChanged, Delay=50}"
+                                         Padding="3"
+                                         
+                                         MinWidth="200"
+                                        />
+                            </StackPanel>
+                        </Border>
+                            
+                        
+
                     </StackPanel>
 
-                    <DataGrid Grid.Row="1" />
+                    <DataGrid Grid.Row="1"
+                              HorizontalAlignment="Stretch"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              ColumnWidth="*"
+                              ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Path=DataContext.TaxpayersCollection}">
+
+                        <DataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+
+                                                <ControlTemplate x:Name="currentGroup"
+                                                                 TargetType="{x:Type GroupItem}">
+
+                                                    <Expander IsExpanded="True"
+                                                              Background="#FF112255"
+                                                              BorderBrush="#FF002255"
+                                                              BorderThickness="1,1,1,5">
+                                                        <Expander.Header>
+                                                            <DockPanel>
+                                                                <TextBlock FontWeight="Bold"
+                                                                           Foreground="#FFEEEEEE"
+                                                                           Text="{Binding Path=Name}"
+                                                                           Margin="5,0,0,0"
+                                                                           Width="100" />
+                                                                <TextBlock FontWeight="Bold"
+                                                                           Text="{Binding Path=ItemCount}" />
+                                                            </DockPanel>
+                                                        </Expander.Header>
+                                                        <Expander.Content>
+                                                            <ItemsPresenter />
+                                                        </Expander.Content>
+                                                    </Expander>
+                                                </ControlTemplate>
+
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
+
+
+                    </DataGrid>
                 </Grid>
 
             </TabItem>
