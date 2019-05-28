@@ -5,16 +5,18 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace PeculiaWPFDataGridInDepth
 {
     public class MainWindowViewModel
     {
         private List<TaxPayer> taxpayersList;
+        public ListCollectionView collectionView;
 
         public MainWindowViewModel()
         {
-            LoadIntialData();  
+            LoadIntialData();
         }
 
 
@@ -24,10 +26,28 @@ namespace PeculiaWPFDataGridInDepth
             set { taxpayersList = value.ToList(); }
         }
 
+        public ListCollectionView TaxpayersCollection
+        {
+            get
+            {
+                return collectionView;
+            }
+            set
+            {
+                collectionView = value;
+            }
+
+        }
+
+
+
+
 
         private void LoadIntialData()
         {
             taxpayersList = DataService.GetAllTaxPayers();
+            collectionView = new ListCollectionView(taxpayersList);
+            collectionView.GroupDescriptions.Add(new PropertyGroupDescription("Gender"));
         }
     }
 }
