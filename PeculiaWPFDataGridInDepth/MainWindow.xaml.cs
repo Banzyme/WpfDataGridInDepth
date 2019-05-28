@@ -20,9 +20,17 @@ namespace PeculiaWPFDataGridInDepth
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel mainViewModel = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
         }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = mainViewModel;
+        }
+
     }
 }
