@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PeculiaWPFDataGridInDepth"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:dt="clr-namespace:PeculiaWPFDataGridInDepth.Data"
+        xmlns:sys2="clr-namespace:System;assembly=System"
         mc:Ignorable="d"
         Title="WPF DataGrid In Depth"
         Height="450"
@@ -276,6 +277,24 @@
                     </DataGrid>
                 </Grid>
 
+            </TabItem>
+
+
+            <TabItem Header="Spell Checking">
+                <StackPanel Background="Purple">
+                    <TextBox Padding="5"
+                             Margin="10"
+                             Background="White"
+                             Text="Suam text"
+                             SpellCheck.IsEnabled="True"
+                             Language="en-US">
+                        <SpellCheck.CustomDictionaries>
+                            <sys2:Uri>pack://application:,,,/CustomDict/customwords.lex</sys2:Uri>
+                        </SpellCheck.CustomDictionaries>
+                    </TextBox>
+
+                    <Button Margin="10" Padding="5" Content="Verify spelling" />
+                </StackPanel>
             </TabItem>
 
         </TabControl>
