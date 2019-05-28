@@ -204,7 +204,8 @@
                                 Orientation="Horizontal"
                                 Height="Auto">
                         <TextBox Text="Filtering by Gener" />
-                        <ComboBox SelectedIndex="0"
+                        <ComboBox 
+                                  SelectedItem="{Binding ElementName=GridWrapper, Path=DataContext.GenderFilter }"
                                   ItemsSource="{Binding Source={StaticResource GenderEnums}}" />
                     </StackPanel>
 

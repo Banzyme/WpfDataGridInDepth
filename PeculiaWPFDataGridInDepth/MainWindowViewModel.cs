@@ -13,6 +13,7 @@ namespace PeculiaWPFDataGridInDepth
     {
         private List<TaxPayer> taxpayersList;
         public ListCollectionView collectionView;
+        public GENDER currentGenderFilter = GENDER.FEMALE;
 
         public MainWindowViewModel()
         {
@@ -40,6 +41,7 @@ namespace PeculiaWPFDataGridInDepth
         }
 
 
+        public GENDER GenderFilter { get { return currentGenderFilter; } set { } }
 
 
 
