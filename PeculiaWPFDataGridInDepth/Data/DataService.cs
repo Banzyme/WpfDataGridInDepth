@@ -25,8 +25,9 @@ namespace PeculiaWPFDataGridInDepth.Data
                 Lastname = "Start",
                 Gender = GENDER.MALE,
                 Orders = Orders1,
-                Adress = new Address() { Place="Montana", StreeNo=810}
-            });
+                BirthPlace = "USA",
+                Adress = new Address() { Place = "Montana", StreeNo = 810 }
+            }) ;
 
 
             var Orders2 = new List<Order>()
@@ -41,7 +42,7 @@ namespace PeculiaWPFDataGridInDepth.Data
                 Firstname = "Sahron",
                 Lastname = "Meyer",
                 Gender = GENDER.FEMALE,
-             
+                BirthPlace = "USA",
                 Orders = Orders2,
                 Adress = new Address() { Place = "Hatfield", StreeNo = 810 }
             });
@@ -59,7 +60,7 @@ namespace PeculiaWPFDataGridInDepth.Data
                 Firstname = "ENDEE",
                 Lastname = "Sa",
                 Gender = GENDER.FEMALE,
-               
+                BirthPlace = "RSA",
                 Orders = Orders3,
                 Adress = new Address() { Place = "New york", StreeNo = 810 }
             });

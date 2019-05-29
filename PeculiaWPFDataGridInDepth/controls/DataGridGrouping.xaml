@@ -9,8 +9,8 @@
              d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80*" />
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="70*" />
+            <RowDefinition Height="30*" />
         </Grid.RowDefinitions>
         
         <DataGrid Grid.Row="0" HorizontalAlignment="Stretch"
@@ -60,9 +60,12 @@
 
         </DataGrid>
 
-        <StackPanel>
-            <Button Command="{Binding GroupByCommand}" CommandParameter="Gender" Content="Group by Gender" />
-            <Button Command="{Binding GroupByCommand}" CommandParameter="BirthPlace" Content="Group by BirthPlace" />
+        <StackPanel Grid.Row="1" Margin="10">
+            <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Path=DataContext.GroupByCommand}" Margin="5" Padding="5" CommandParameter="Gender" Content="Group by Gender" />
+            <Button Command="{Binding  RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Path=DataContext.GroupByCommand}"
+                    Margin="5"
+                    Padding="5"
+                    CommandParameter="BirthPlace" Content="Group by BirthPlace" />
         </StackPanel>
     </Grid>
 </UserControl>
