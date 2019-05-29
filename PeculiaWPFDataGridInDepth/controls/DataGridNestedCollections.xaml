@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="PeculiaWPFDataGridInDepth.controls.DataGridNestedCollections"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PeculiaWPFDataGridInDepth.controls"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <DataGrid x:Name="DGNestedCols"
+                  ItemsSource="{Binding}"
+                  ColumnWidth="*"
+                  AutoGenerateColumns="False">
+
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="User Id"
+                                    Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Firstname"
+                                    Binding="{Binding Firstname}" />
+                <DataGridTextColumn Header="Lastname"
+                                    Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="Tax reference"
+                                    Binding="{Binding TaxRef}" />
+
+                <DataGridComboBoxColumn Header="Gender"
+                                        SelectedItemBinding="{Binding Gender}"
+                                        ItemsSource="{Binding Source={StaticResource GenderEnums }}" />
+
+
+                <DataGridTemplateColumn Header="Adress">
+                    <DataGridTemplateColumn.CellTemplate>
+
+                        <DataTemplate x:Name="DGAdressTemplate2">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Adress.Place}" />
+                                <TextBlock Text=" , " />
+                                <TextBlock Text="{Binding Adress.StreeNo}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <!--Displaying a nested collection-->
+                <DataGridTemplateColumn Header="Audit Cases">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:Name="nestedCollTemplate">
+
+                            <ListView ItemsSource="{Binding AuditCases}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox Text="{Binding Id}" />
+                                            <TextBox Text=" | " />
+                                            <TextBox Text="{Binding Status}" />
+                                            <TextBox Text=" | " />
+                                            <TextBox Text="{Binding AuditReason}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</UserControl>

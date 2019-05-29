@@ -56,7 +56,49 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BindableBase.cs" />
+    <Compile Include="controls\BasicDataGrid.xaml.cs">
+      <DependentUpon>BasicDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controls\DataGridFiltering.xaml.cs">
+      <DependentUpon>DataGridFiltering.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controls\DataGridGrouping.xaml.cs">
+      <DependentUpon>DataGridGrouping.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controls\DataGridNestedCollections.xaml.cs">
+      <DependentUpon>DataGridNestedCollections.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controls\DataGridWithComplexTypes.xaml.cs">
+      <DependentUpon>DataGridWithComplexTypes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controls\SpellChecker.xaml.cs">
+      <DependentUpon>SpellChecker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RelayCommand.cs" />
+    <Page Include="controls\BasicDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\DataGridFiltering.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\DataGridGrouping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\DataGridNestedCollections.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\DataGridWithComplexTypes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\SpellChecker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,8 +143,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
