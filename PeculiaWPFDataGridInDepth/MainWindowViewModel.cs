@@ -13,7 +13,7 @@ namespace PeculiaWPFDataGridInDepth
 {
     public class MainWindowViewModel : BindableBase
     {
-        private List<TaxPayer> taxpayersList;
+        private List<Person> taxpayersList;
         public ListCollectionView collectionView;
         public GENDER currentGenderFilter = GENDER.FEMALE;
         private string searchString = string.Empty;
@@ -24,10 +24,11 @@ namespace PeculiaWPFDataGridInDepth
         }
 
         public RelayCommand<object> SpellCheckCommand { get; private set; }
+        public RelayCommand<object> GroupByCommand {get;private set;}
 
-        public ObservableCollection<TaxPayer> TaxPayersList
+    public ObservableCollection<Person> TaxPayersList
         {
-            get { return new ObservableCollection<TaxPayer>(taxpayersList); }
+            get { return new ObservableCollection<Person>(taxpayersList); }
             set { taxpayersList = value.ToList(); }
         }
 
@@ -76,10 +77,29 @@ namespace PeculiaWPFDataGridInDepth
 
         private void LoadIntialData()
         {
-            taxpayersList = DataService.GetAllTaxPayers();
+            taxpayersList = DataService.GetAllclients();
             collectionView = new ListCollectionView(taxpayersList);
             collectionView.GroupDescriptions.Add(new PropertyGroupDescription("Gender"));
             SpellCheckCommand = new RelayCommand<object>(OnCheckSpelling);
+            GroupByCommand = new RelayCommand<object>(OnGroupByAction);
+        }
+
+        private void OnGroupByAction(object groupingProperty)
+        {
+            var groupby = (string)groupingProperty;
+
+            switch (groupby)
+            {
+                case "BirthPlace":
+                    collectionView.GroupDescriptions.Clear();
+                    collectionView.GroupDescriptions.Add(new PropertyGroupDescription("BirthPlace"));
+                    break;
+                case "Gender":
+                default:
+                    collectionView.GroupDescriptions.Clear();
+                    collectionView.GroupDescriptions.Add(new PropertyGroupDescription("Gender"));
+                    break;
+            }
         }
 
         private void OnCheckSpelling(object txtBx)
@@ -109,7 +129,7 @@ namespace PeculiaWPFDataGridInDepth
 
             collectionView.Filter = (user) =>
             {
-                TaxPayer payer = user as TaxPayer;
+                Person payer = user as Person;
 
                 if (payer.Firstname.Contains(searchTerm)) return true;
 
@@ -123,7 +143,7 @@ namespace PeculiaWPFDataGridInDepth
             {
                 collectionView.Filter = (user) =>
                 {
-                    TaxPayer payer = user as TaxPayer;
+                    Person payer = user as Person;
 
                     if (payer.Gender == filterVal)
                     {

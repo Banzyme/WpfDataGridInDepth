@@ -8,60 +8,59 @@ namespace PeculiaWPFDataGridInDepth.Data
 {
     public static class DataService
     {
-        private static List<TaxPayer> taxPayers = new List<TaxPayer>();
+        private static List<Person> clients = new List<Person>();
 
-        public static List<TaxPayer> GetAllTaxPayers()
+        public static List<Person> GetAllclients()
         {
-            var audits1 = new List<Audit>()
+            var Orders1 = new List<Order>()
             {
-                new Audit(){Id=1 , Status = AuditStatus.OPENED, AuditReason ="Return not completed" },
-                new Audit(){Id=2 , Status = AuditStatus.IN_PROGRESS, AuditReason ="Supporting docs outstanding" },
-                new Audit(){Id=3 , Status = AuditStatus.COMPLETED, AuditReason ="Potential fraud" }
+                new Order(){Id=1 , Status = ORDER_STATUS.CREATED, OrderDescription ="Return not completed" },
+                new Order(){Id=2 , Status = ORDER_STATUS.IN_PROGRESS, OrderDescription ="Supporting docs outstanding" },
+                new Order(){Id=3 , Status = ORDER_STATUS.COMPLETED, OrderDescription ="Potential fraud" }
             };
-            taxPayers.Add(new TaxPayer()
+            clients.Add(new Person()
             {
                 Id = 1,
                 Firstname = "Mike",
                 Lastname = "Start",
                 Gender = GENDER.MALE,
-                TaxRef = 1,
-                AuditCases = audits1,
+                Orders = Orders1,
                 Adress = new Address() { Place="Montana", StreeNo=810}
             });
 
 
-            var audits2 = new List<Audit>()
+            var Orders2 = new List<Order>()
             {
-                new Audit(){Id=1 , Status = AuditStatus.OPENED, AuditReason ="Return not completed" },
-                new Audit(){Id=2 , Status = AuditStatus.IN_PROGRESS, AuditReason ="Supporting docs outstanding" },
-                new Audit(){Id=3 , Status = AuditStatus.COMPLETED, AuditReason ="Potential fraud" }
+                new Order(){Id=1 , Status = ORDER_STATUS.CREATED, OrderDescription ="Return not completed" },
+                new Order(){Id=2 , Status = ORDER_STATUS.IN_PROGRESS, OrderDescription ="Supporting docs outstanding" },
+                new Order(){Id=3 , Status = ORDER_STATUS.COMPLETED, OrderDescription ="Potential fraud" }
             };
-            taxPayers.Add(new TaxPayer()
+            clients.Add(new Person()
             {
                 Id = 1,
                 Firstname = "Sahron",
                 Lastname = "Meyer",
                 Gender = GENDER.FEMALE,
-                TaxRef = 1,
-                AuditCases = audits2,
+             
+                Orders = Orders2,
                 Adress = new Address() { Place = "Hatfield", StreeNo = 810 }
             });
 
 
-            var audits3 = new List<Audit>()
+            var Orders3 = new List<Order>()
             {
-                new Audit(){Id=1 , Status = AuditStatus.OPENED, AuditReason ="Return not completed" },
-                new Audit(){Id=2 , Status = AuditStatus.IN_PROGRESS, AuditReason ="Supporting docs outstanding" },
-                new Audit(){Id=3 , Status = AuditStatus.COMPLETED, AuditReason ="Potential fraud" }
+                new Order(){Id=1 , Status = ORDER_STATUS.CREATED, OrderDescription ="Return not completed" },
+                new Order(){Id=2 , Status = ORDER_STATUS.IN_PROGRESS, OrderDescription ="Supporting docs outstanding" },
+                new Order(){Id=3 , Status = ORDER_STATUS.COMPLETED, OrderDescription ="Potential fraud" }
             };
-            taxPayers.Add(new TaxPayer()
+            clients.Add(new Person()
             {
                 Id = 1,
                 Firstname = "ENDEE",
                 Lastname = "Sa",
                 Gender = GENDER.FEMALE,
-                TaxRef = 1,
-                AuditCases = audits3,
+               
+                Orders = Orders3,
                 Adress = new Address() { Place = "New york", StreeNo = 810 }
             });
 
@@ -70,7 +69,7 @@ namespace PeculiaWPFDataGridInDepth.Data
 
 
 
-            return taxPayers;
+            return clients;
         }
 
 

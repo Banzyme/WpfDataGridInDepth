@@ -6,25 +6,24 @@ using System.Threading.Tasks;
 
 namespace PeculiaWPFDataGridInDepth.Data
 {
-    public class Audit
+    public class Order
     {
         private int id;
-        private AuditStatus status;
-        private string auditReason;
+        private ORDER_STATUS status;
+        private string orderDescription;
         private DateTime dateStarted = DateTime.MinValue;
 
 
         public int Id { get => id; set => id = value; }
-        public string AuditReason { get => auditReason; set => auditReason = value; }
-        public AuditStatus Status { get => status; set => status = value; }
+        public ORDER_STATUS Status { get => status; set => status = value; }
         public DateTime DateStarted { get => dateStarted; set => dateStarted = value; }
-
+        public string OrderDescription { get => orderDescription; set => orderDescription = value; }
     }
 
 
-    public enum AuditStatus
+    public enum ORDER_STATUS
     {
-        OPENED = 1 ,
+        CREATED = 1 ,
         IN_PROGRESS,
         COMPLETED
     }

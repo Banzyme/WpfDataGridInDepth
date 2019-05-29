@@ -6,27 +6,29 @@ using System.Threading.Tasks;
 
 namespace PeculiaWPFDataGridInDepth.Data
 {
-    public class TaxPayer
+    public class Person
     {
         private int id;
         private string firstname;
         private string lastname;
-        private long taxRef;
+        private string birthPlace;
         private GENDER gender;
         private Address adress;
-        private List<Audit> auditCases;
+        private List<Order> _orders;
 
         public int Id { get => id; set => id = value; }
         public string Firstname { get => firstname; set => firstname = value; }
         public string Lastname { get => lastname; set => lastname = value; }
-        public long TaxRef { get => taxRef; set => taxRef = value; }
-        public List<Audit> AuditCases { get => auditCases; set => auditCases = value; }
+
         public GENDER Gender { get => gender; set => gender = value; }
         public Address Adress { get => adress; set => adress = value; }
+        public string BirthPlace { get => birthPlace; set => birthPlace = value; }
+        public List<Order> Orders { get => _orders; set => _orders = value; }
     }
 
 
-    public enum GENDER{
+    public enum GENDER
+    {
         MALE = 1,
         FEMALE
     }
